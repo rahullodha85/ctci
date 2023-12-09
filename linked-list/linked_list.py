@@ -14,10 +14,18 @@ class LinkedList:
 
     def append_to_tail(self, data):
         end = Node(data)
+
+
+        # if linked list is empty, make new node the head
+        if not self.head:
+            self.head = end
+            return
+
+        # if not empty
         curr = self.head
 
         # traverse to end of linked list and add new node
-        while curr.next is not None:
+        while curr.next:
             curr = curr.next
         curr.next = end
 
