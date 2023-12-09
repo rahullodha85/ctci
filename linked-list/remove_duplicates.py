@@ -22,6 +22,24 @@ def remove_duplicats(ll: LinkedList) -> LinkedList:
     return nll
 
 
+def remove_duplicates_no_extra_buffer(ll: LinkedList):
+    curr = ll.head
+
+    # if linked-list is empty or has only one element
+    if not curr or not curr.next:
+        return
+    else:
+        while curr:
+            if curr.next:
+                search = curr.next
+                while search:
+
+                    search = search.next
+
+            curr = curr.next
+
+
+
 if __name__ == '__main__':
     ll = LinkedList("Mon")
     ll.append_to_tail("Tues")

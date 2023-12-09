@@ -46,22 +46,27 @@ class LinkedList:
             self.head = node
             node.next = temp
 
-    # def insert_at_index(self, index: int, data):
-    #     node = Node(data)
-    #
-    #     # if linked list is empty and index is 0 insert at beginning
-    #     if not self.head or index == 0:
-    #         self.insert_at_begin(data)
-    #     else:
-    #         position = 0
-    #         curr = self.head
-    #         while curr:
-    #             if index == position:
-    #                 temp = curr
-    #                 curr = node
-    #                 curr.next = temp
-    #             position += 1
-    #             curr = curr.next
+    def insert_at_index(self, index: int, data):
+        node = Node(data)
+
+        # if linked list is empty or index is 0 insert at beginning
+        if not self.head and index == 0:
+            self.insert_at_begin(data)
+        else:
+            # non empty linked list index 0 insertion
+            if index == 0:
+                self.insert_at_begin(data)
+                return
+            position = 0
+            curr = self.head
+            while curr:
+                if index == position + 1:
+                    node.next = curr.next
+                    curr.next = node
+                position += 1
+                curr = curr.next
+            if index >= position:
+                raise Exception(f"index: {index} is not present in linked list")
 
     def delete_node(self, data):
         curr = self.head
@@ -82,14 +87,16 @@ class LinkedList:
         if curr:
             curr = None
 
+    def delete_at_index(self):
+        pass
+
 
 if __name__ == '__main__':
     ll = LinkedList(5)
     ll.append_to_tail(4)
     ll.append_to_tail(3)
     ll.append_to_tail(7)
-    # ll.print_list()
     ll.insert_at_begin(1)
-    # ll.print_list()
-    ll.delete_node(7)
+    ll.insert_at_index(0, 2)
+    # ll.delete_node(7)
     ll.print_list()
