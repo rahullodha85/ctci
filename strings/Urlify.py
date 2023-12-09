@@ -14,13 +14,14 @@ def urlify(s):
             j += 1
         else:
             if s[i] == " ":
-                s[i + space_count*2] = "%"
+                s[i + space_count*2] = "0"
                 s[i-1 + space_count*2] = "2"
-                s[i-2 + space_count*2] = "0"
+                s[i-2 + space_count*2] = "%"
                 space_count -=1
             else:
                 s[i + space_count*2] = s[i]
     return ''.join(s)
+
 
 def get_space_count(s):
     count = 0
