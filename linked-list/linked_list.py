@@ -87,8 +87,24 @@ class LinkedList:
         if curr:
             curr = None
 
-    def delete_at_index(self):
-        pass
+    def delete_at_index(self, index: int):
+        # if linked list is empty, deletion not possible
+        if not self.head:
+            raise Exception(f'linked list is empty')
+        else:
+            curr = self.head
+            position = 0
+            while curr:
+                if index == position + 1:
+                    if curr.next:
+                        curr.next = curr.next.next
+                    # deletion at the end
+                    else:
+                        curr.next = None
+                position += 1
+                curr = curr.next
+            if index > position:
+                raise Exception(f"index: {index} is not present in linked list")
 
 
 if __name__ == '__main__':
@@ -97,6 +113,7 @@ if __name__ == '__main__':
     ll.append_to_tail(3)
     ll.append_to_tail(7)
     ll.insert_at_begin(1)
-    ll.insert_at_index(0, 2)
+    # ll.insert_at_index(0, 2)
     # ll.delete_node(7)
+    ll.delete_at_index(4)
     ll.print_list()
