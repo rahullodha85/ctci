@@ -31,11 +31,15 @@ def remove_duplicates_no_extra_buffer(ll: LinkedList):
     else:
         while curr:
             if curr.next:
-                search = curr.next
-                while search:
-
-                    search = search.next
-
+                # check if next is duplicate
+                if curr.next.data == curr.data:
+                    curr.next = curr.next.next
+                else:
+                    search = curr.next
+                    while search and search.next:
+                        if search.next.data == curr.data:
+                            search.next = search.next.next
+                        search = search.next
             curr = curr.next
 
 
@@ -46,6 +50,11 @@ if __name__ == '__main__':
     ll.append_to_tail("Wed")
     ll.append_to_tail("Mon")
     ll.append_to_tail("Thurs")
+    ll.append_to_tail("Wed")
+    ll.append_to_tail("Thurs")
+    ll.append_to_tail("Fri")
 
-    nll = remove_duplicats(ll)
-    nll.print_list()
+    # nll = remove_duplicats(ll)
+    # nll.print_list()
+    remove_duplicates_no_extra_buffer(ll)
+    ll.print_list()
