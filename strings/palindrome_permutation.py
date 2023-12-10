@@ -1,5 +1,9 @@
+"""palindrom permutation"""
+
+
 def is_palindrome_permutation(s):
-    d = dict()
+    """checks if a string or one its permutation results into a palindrome string"""
+    d = {}
 
     for c in s:
         if d.get(c):
@@ -8,7 +12,7 @@ def is_palindrome_permutation(s):
             d[c] = 1
 
     count = 0
-    for key in d.keys():
+    for key in d:
         if d.get(key) % 2 != 0:
             count += 1
 

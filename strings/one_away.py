@@ -1,9 +1,13 @@
+"""one away"""
+
+
 def one_away(s1, s2):
+    """checks if two strings are one variation away from each other or not"""
 
     m = len(s1)
     n = len(s2)
 
-    if abs(m-n) > 1:
+    if abs(m - n) > 1:
         return False
     i = 0
     j = 0
