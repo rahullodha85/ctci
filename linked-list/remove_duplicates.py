@@ -1,19 +1,21 @@
+"""remove duplicates functions"""
+
 from linked_list import LinkedList
 
 
-def remove_duplicats(ll: LinkedList) -> LinkedList:
-    curr = ll.head
+def remove_duplicates(linked_list: LinkedList) -> LinkedList:
+    """removes duplicates using extra memory"""
+    curr = linked_list.head
 
     # if empty linked list, there is nothing to remove
     if not curr:
-        return ll
+        return linked_list
     # if there are values, try de-duplicating them with set
-    else:
-        s = []
-        while curr:
-            s.append(curr.data)
-            curr = curr.next
-        s = set(s)
+    s = []
+    while curr:
+        s.append(curr.data)
+        curr = curr.next
+    s = set(s)
 
     nll = LinkedList()
     for item in s:
@@ -22,26 +24,25 @@ def remove_duplicats(ll: LinkedList) -> LinkedList:
     return nll
 
 
-def remove_duplicates_no_extra_buffer(ll: LinkedList):
-    curr = ll.head
+def remove_duplicates_no_extra_buffer(linked_list: LinkedList):
+    """removes duplicates in memory"""
+    curr = linked_list.head
 
     # if linked-list is empty or has only one element
     if not curr or not curr.next:
         return
-    else:
-        while curr:
-            if curr.next:
-                # check if next is duplicate
-                if curr.next.data == curr.data:
-                    curr.next = curr.next.next
-                else:
-                    search = curr.next
-                    while search and search.next:
-                        if search.next.data == curr.data:
-                            search.next = search.next.next
-                        search = search.next
-            curr = curr.next
-
+    while curr:
+        if curr.next:
+            # check if next is duplicate
+            if curr.next.data == curr.data:
+                curr.next = curr.next.next
+            else:
+                search = curr.next
+                while search and search.next:
+                    if search.next.data == curr.data:
+                        search.next = search.next.next
+                    search = search.next
+        curr = curr.next
 
 
 if __name__ == '__main__':

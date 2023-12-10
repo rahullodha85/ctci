@@ -1,11 +1,20 @@
-class Node:
+"""linked list and node classes"""
+
+
+class Node:  # pylint: disable=too-few-public-methods
+    """Node class with data and next"""
+
     def __init__(self, data):
+        """default constructor that initializes a node"""
         self.data = data
         self.next = None
 
 
 class LinkedList:
+    """linked list class"""
+
     def __init__(self, data=None):
+        """default constructor that initializes an empty or single node linked list"""
         if not data:
             self.head = None
         else:
@@ -13,8 +22,8 @@ class LinkedList:
             self.head = node
 
     def append_to_tail(self, data):
+        """appends a node at the end of liinked list"""
         end = Node(data)
-
 
         # if linked list is empty, make new node the head
         if not self.head:
@@ -30,12 +39,14 @@ class LinkedList:
         curr.next = end
 
     def print_list(self):
+        """prints whole linked list"""
         curr = self.head
         while curr:
             print(curr.data)
             curr = curr.next
 
     def insert_at_begin(self, data):
+        """inserts node at the beginning"""
         node = Node(data)
 
         # if linked list is empty, make new node head of linked list
@@ -47,6 +58,7 @@ class LinkedList:
             node.next = temp
 
     def insert_at_index(self, index: int, data):
+        """inserts node at index"""
         node = Node(data)
 
         # if linked list is empty or index is 0 insert at beginning
@@ -66,9 +78,10 @@ class LinkedList:
                 position += 1
                 curr = curr.next
             if index >= position:
-                raise Exception(f"index: {index} is not present in linked list")
+                raise IndexError(f"index: {index} is not present in linked list")
 
     def delete_node(self, data):
+        """deletes first node that matches data"""
         curr = self.head
 
         # if head is to be removed
@@ -88,23 +101,23 @@ class LinkedList:
             curr = None
 
     def delete_at_index(self, index: int):
+        """deletes node at index"""
         # if linked list is empty, deletion not possible
         if not self.head:
-            raise Exception(f'linked list is empty')
-        else:
-            curr = self.head
-            position = 0
-            while curr:
-                if index == position + 1:
-                    if curr.next:
-                        curr.next = curr.next.next
-                    # deletion at the end
-                    else:
-                        curr.next = None
-                position += 1
-                curr = curr.next
-            if index > position:
-                raise Exception(f"index: {index} is not present in linked list")
+            raise IndexError('linked list is empty')
+        curr = self.head
+        position = 0
+        while curr:
+            if index == position + 1:
+                if curr.next:
+                    curr.next = curr.next.next
+                # deletion at the end
+                else:
+                    curr.next = None
+            position += 1
+            curr = curr.next
+        if index > position:
+            raise IndexError(f"index: {index} is not present in linked list")
 
 
 if __name__ == '__main__':

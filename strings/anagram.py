@@ -1,5 +1,8 @@
-def is_anagram(s1, s2):
+"""is anagram and its supporting functions"""
 
+
+def is_anagram(s1, s2):
+    """main is_anagram function"""
     if len(s1) != len(s2):
         return False
 
@@ -10,7 +13,7 @@ def is_anagram(s1, s2):
 
 
 def get_char_freq(s):
-
+    """gets frequency of character as k-v pair dictionary"""
     d = {}
     for char in s:
         if char in d:
