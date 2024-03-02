@@ -1,10 +1,15 @@
+"""sum linked-lists by elements tests"""
+
 import unittest
+
 from linkedlist.linked_list import LinkedList
 from linkedlist.sum_list import sum_list
 
 
 class TestSumList(unittest.TestCase):
+    """sum linked-lists by elements tests"""
     def test_sum_list(self):
+        """smoke test"""
         linked_list_1 = LinkedList()
         linked_list_1.append_to_tail(7)
         linked_list_1.append_to_tail(1)
@@ -21,7 +26,7 @@ class TestSumList(unittest.TestCase):
 
         result_list = sum_list(linked_list_1, linked_list_2)
 
-        result_list_curr = result_list.head
+        result_list_curr = result_list.top
         expected_result_curr = expected_result.head
         while result_list_curr and expected_result_curr:
             self.assertEqual(expected_result_curr.data, result_list_curr.data)
@@ -32,6 +37,7 @@ class TestSumList(unittest.TestCase):
         self.assertIsNone(expected_result_curr)
 
     def test_sum_list_one_short(self):
+        """one linked list is shorter than other"""
         linked_list_1 = LinkedList()
         linked_list_1.append_to_tail(7)
         linked_list_1.append_to_tail(1)
@@ -47,7 +53,7 @@ class TestSumList(unittest.TestCase):
 
         result_list = sum_list(linked_list_1, linked_list_2)
 
-        result_list_curr = result_list.head
+        result_list_curr = result_list.top
         expected_result_curr = expected_result.head
         while result_list_curr and expected_result_curr:
             self.assertEqual(expected_result_curr.data, result_list_curr.data)
@@ -58,6 +64,7 @@ class TestSumList(unittest.TestCase):
         self.assertIsNone(expected_result_curr)
 
     def test_sum_list_one_empty(self):
+        """one linked list is empty"""
         linked_list_1 = LinkedList()
 
         linked_list_2 = LinkedList()
@@ -71,7 +78,7 @@ class TestSumList(unittest.TestCase):
 
         result_list = sum_list(linked_list_1, linked_list_2)
 
-        result_list_curr = result_list.head
+        result_list_curr = result_list.top
         expected_result_curr = expected_result.head
         while result_list_curr and expected_result_curr:
             self.assertEqual(expected_result_curr.data, result_list_curr.data)

@@ -1,7 +1,9 @@
-from linkedlist.linked_list import LinkedList
+"""sums to linked-lists by elements and returns result linked-list"""
+from linked_list import LinkedList
 
 
 def sum_list(list_a: LinkedList, list_b: LinkedList):
+    """sums to linked-lists by elements and returns result linked-list"""
     curr_a = list_a.head
     curr_b = list_b.head
 
@@ -50,5 +52,5 @@ if __name__ == '__main__':
     linked_list_2.append_to_tail(9)
     linked_list_2.append_to_tail(2)
 
-    result_list = sum_list(linked_list_1, linked_list_2)
-    result_list.print_list()
+    rl = sum_list(linked_list_1, linked_list_2)
+    rl.print_list()

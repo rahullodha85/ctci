@@ -1,7 +1,10 @@
+"""delete first occurrence function"""
+
 from linked_list import LinkedList
 
 
-def delete_first_occurance(ll: LinkedList, data: int) -> None:
+def delete_first_occurrence(ll: LinkedList, data: int) -> None:
+    """deletes first occurrence of node with matching data"""
     curr = ll.head
 
     # return if empty linked list
@@ -26,5 +29,5 @@ if __name__ == '__main__':
         linked_list.append_to_tail(i)
     linked_list.append_to_tail(2)
     linked_list.print_list()
-    delete_first_occurance(linked_list, 2)
+    delete_first_occurrence(linked_list, 2)
     linked_list.print_list()
