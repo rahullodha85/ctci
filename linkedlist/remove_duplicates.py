@@ -28,7 +28,7 @@ def remove_duplicates_no_extra_buffer(linked_list: LinkedList):
     """removes duplicates in memory"""
     curr = linked_list.head
 
-    # if linked-list is empty or has only one element
+    # if linkedlist-test is empty or has only one element
     if not curr or not curr.next:
         return
     while curr:
