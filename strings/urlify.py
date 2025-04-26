@@ -22,7 +22,10 @@ def urlify(s):
                 s[i - 2 + space_count * 2] = "%"
                 space_count -= 1
             else:
-                s[i + space_count * 2] = s[i]
+                if space_count > 0:
+                    s[i + space_count * 2] = s[i]
+                else:
+                    break
     return ''.join(s)
 
 
@@ -36,4 +39,15 @@ def get_space_count(s):
     return count
 
 
-print(urlify("Hello world hi!"))
+if __name__ == "__main__":
+    # Test cases
+    test_strings = [
+        "Mr John Smith",
+        "Hello World",
+        "Multiple   spaces"
+    ]
+
+    for test in test_strings:
+        result = urlify(test)
+        print(f"Original: '{test}'")
+        print(f"URLified: '{result}'")
