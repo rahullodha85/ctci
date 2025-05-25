@@ -40,6 +40,27 @@ def sum_list(list_a: LinkedList, list_b: LinkedList):
 
     return result_list
 
+def sum_list_alternative(list_a: LinkedList, list_b: LinkedList):
+    carry = 0
+    result_list = LinkedList()
+
+    curr_a = list_a.head
+    curr_b = list_b.head
+
+    while curr_a or curr_b or carry:
+        sum = carry
+        if curr_a:
+            sum += curr_a.data
+            curr_a = curr_a.next
+
+        if curr_b:
+            sum += curr_b.data
+            curr_b = curr_b.next
+        carry = sum // 10
+        result_list.append_to_tail(sum % 10)
+
+    return result_list
+
 
 if __name__ == '__main__':
     linked_list_1 = LinkedList()
@@ -52,5 +73,10 @@ if __name__ == '__main__':
     linked_list_2.append_to_tail(9)
     linked_list_2.append_to_tail(2)
 
+    print('using old sum_list function:')
     rl = sum_list(linked_list_1, linked_list_2)
+    rl.print_list()
+    print('---------------------')
+    print('using new sum_list_alternative function:')
+    rl = sum_list_alternative(linked_list_1, linked_list_2)
     rl.print_list()

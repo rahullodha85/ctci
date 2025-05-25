@@ -11,11 +11,10 @@ def remove_duplicates(linked_list: LinkedList) -> LinkedList:
     if not curr:
         return linked_list
     # if there are values, try de-duplicating them with set
-    s = []
+    s = set()
     while curr:
-        s.append(curr.data)
+        s.add(curr.data)
         curr = curr.next
-    s = set(s)
 
     nll = LinkedList()
     for item in s:
@@ -54,7 +53,10 @@ if __name__ == '__main__':
     ll.append_to_tail("Wed")
     ll.append_to_tail("Thurs")
     ll.append_to_tail("Fri")
-
+    print('Original Linked List:')
+    ll.print_list()
+    print('---------------------')
+    print('Linked List after removing duplicates:')
     # nll = remove_duplicats(ll)
     # nll.print_list()
     remove_duplicates_no_extra_buffer(ll)
